@@ -84,6 +84,14 @@ async function run() {
         });
 
 
+        // http://localhost:5000/user
+        app.get("/user", async (req, res) => {
+            const query = {};
+            const users = await userCollection.find(query).toArray();
+            res.send(users);
+        });
+
+
 
     }
 
