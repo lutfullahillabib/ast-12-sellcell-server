@@ -17,7 +17,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//
 
 console.log(process.env.DB_USER);
 console.log(process.env.DB_PASS);
@@ -50,12 +49,11 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 
 
 async function run() {
+
     try {
 
         const userCollection = client.db("SellCell").collection("user");
         const productCollection = client.db("SellCell").collection("product");
-
-
 
         // User
         app.post("/user", async (req, res) => {
@@ -63,7 +61,6 @@ async function run() {
             const result = await userCollection.insertOne(user);
             res.send(result);
         });
-
 
         app.put("/user", async (req, res) => {
             const email = req.body.email;
@@ -83,14 +80,12 @@ async function run() {
             res.send(result);
         });
 
-
         // http://localhost:5000/user
         app.get("/user", async (req, res) => {
             const query = {};
             const users = await userCollection.find(query).toArray();
             res.send(users);
         });
-
 
         // http://localhost:5000/user/a@a.com
         app.get("/user/:email", async (req, res) => {
@@ -101,7 +96,6 @@ async function run() {
             // console.log(seller);
             res.send({ role: seller?.role === "Seller" });
         });
-
 
 
         // Category
@@ -116,7 +110,6 @@ async function run() {
         // });
 
 
-
         // // Product
 
         // app.post("/products", async (req, res) => {
@@ -126,15 +119,11 @@ async function run() {
         //     res.send(result);
         // });
 
-
         // app.get("/products", async (req, res) => {
         //     const query = {};
         //     const users = await productCollection.find(query).toArray();
         //     res.send(users);
         // });
-
-
-
 
     }
 
@@ -147,8 +136,6 @@ async function run() {
 run().catch(console.log);
 
 
-
-// 
 
 app.get('/', async (req, res) => {
     res.send('ast-12-sellcell server is running');
