@@ -9,7 +9,6 @@ require('dotenv').config();
 
 // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -17,6 +16,12 @@ const app = express();
 // middleware
 app.use(cors());
 app.use(express.json());
+
+//
+
+console.log(process.env.DB_USER);
+console.log(process.env.DB_PASS);
+
 
 // 
 
