@@ -104,6 +104,18 @@ async function run() {
 
 
 
+        // Category
+
+        // http://localhost:500/brand?Brand=Nokia
+        // app.get("/brand", async (req, res) => {
+        //     const Brand = req.query.Brand;
+        //     // console.log(Brand);
+        //     const query = { Brand };
+        //     const result = await productCollection.find(query).toArray();
+        //     res.send(result);
+        // });
+
+
 
     }
 
