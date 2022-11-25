@@ -116,7 +116,7 @@ async function run() {
         // });
 
 
-        
+
         // // Product
 
         // app.post("/products", async (req, res) => {
@@ -124,6 +124,13 @@ async function run() {
         //     // console.log(product);
         //     const result = await productCollection.insertOne(product);
         //     res.send(result);
+        // });
+
+
+        // app.get("/products", async (req, res) => {
+        //     const query = {};
+        //     const users = await productCollection.find(query).toArray();
+        //     res.send(users);
         // });
 
 
