@@ -65,6 +65,25 @@ async function run() {
         });
 
 
+        app.put("/user", async (req, res) => {
+            const email = req.body.email;
+            const data = req.body;
+            const query = { email: email };
+            const options = { upsert: true };
+            const updateDoc = {
+                $set: {
+                    name: data.name,
+                    email: data.email,
+                    photoURL: data.photoURL,
+                    role: data.role,
+                    verify: data.verify,
+                },
+            };
+            const result = await userCollection.updateOne(query, updateDoc, options);
+            res.send(result);
+        });
+
+
 
     }
 
