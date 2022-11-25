@@ -92,6 +92,18 @@ async function run() {
         });
 
 
+        // http://localhost:5000/user/a@a.com
+        app.get("/user/:email", async (req, res) => {
+            const email = req.params.email;
+            // console.log(email);
+            const query = { email };
+            const seller = await userCollection.findOne(query);
+            // console.log(seller);
+            res.send({ role: seller?.role === "Seller" });
+        });
+
+
+
 
     }
 
