@@ -1,0 +1,17 @@
+[
+    {
+        "category_id": "01",
+        "category_name": "Samsung",
+        "img": "https://i.ibb.co/Zx8jx0G/Samsung.png"
+    },
+    {
+        "category_id": "02",
+        "category_name": "Apple",
+        "img": "https://i.ibb.co/svVxwys/Apple.png"
+    },
+    {
+        "category_id": "03",
+        "category_name": "Xiaomi",
+        "img": "https://i.ibb.co/C0f70M7/Xiaomi.png"
+    }
+]
