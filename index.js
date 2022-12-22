@@ -71,7 +71,7 @@ async function run() {
         const paymentsCollection = client.db("SellCell").collection("payments");
 
 
-        const advertiseCollection = client.db('SellCell').collection('advertise');
+        // const advertiseCollection = client.db('SellCell').collection('advertise');
 
 
         /* User */
@@ -394,7 +394,7 @@ async function run() {
 
         // advertise
 
-     
+
 
         app.get('/myAdvertise/:advertise', async (req, res) => {
             const advertise = req.params.advertise;
@@ -404,7 +404,7 @@ async function run() {
             res.send(result);
         });
 
-
+        // update ad
         app.put('/myAdvertise/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: ObjectId(id) }
@@ -418,8 +418,48 @@ async function run() {
             res.send(result);
         });
 
+        // remove ad
+        app.put("/myAdvertiseRemove/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const options = { upsert: true };
+            const updatedDoc = {
+                $set: {
+                    advertise: "false",
+                },
+            };
+            const result = await productCollection.updateOne(
+                filter,
+                updatedDoc,
+                options
+            );
+            // console.log("remove");
+            res.send(result);
+        });
 
 
+        // sold product
+
+        // Product sold status set
+        app.put("/soldProduct/sold/:id", async (req, res) => {
+            const id = req.params.id;
+            console.log(id);
+            const filter = { _id: ObjectId(id) };
+            const option = { upsert: true };
+            const updatedDoc = {
+                $set: {
+                    // report: true,
+                    sold: true,
+                    advertise: 'false',
+                },
+            };
+            const result = await productCollection.updateOne(
+                filter,
+                updatedDoc,
+                option
+            );
+            res.send(result);
+        });
 
 
     }
